@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-#d387^g=15mziy(b=5$pyg&w2!3i=ua6qny(^&&+2(wf1)valu
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['personalchip.herokuapp.com', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['chipvideo.herokuapp.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
