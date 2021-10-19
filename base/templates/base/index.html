@@ -1,0 +1,34 @@
+{% extends 'base/main.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+.project-container {
+	max-width: 400px;
+	margin-left: 2em;
+	margin-top: 2em;
+	margin-bottom: 2em;
+}
+</style>
+
+<div class="container">
+<div class="project-container">
+	{% if request.user.is_authenticated %}
+	<form action="." method="POST" enctype="multipart/form-data">
+		{% csrf_token %}
+		{{form.as_p}}
+		
+		<button class="btn btn-success">Upload Movie</button>
+		{% endif %}
+	</form>
+
+	{% for x in all %}
+		<h3>{{x.caption}}</h3>
+		<video class="project-container embed-responsive embed-responsive-16by9" controls = "controls">
+			<source src="{{x.video.url}}" type="video/mp4" />
+		</video>
+	{% endfor %}
+</div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,105 @@
+{% extends 'base/main.html' %}
+{% load static %}
+{% block content %}
+
+
+<section class="hero">
+  <div class="hero--content">
+    <div class="hero--content--intro">
+      <img id="profile_pic" src="{% static 'images/Chip_2.jfif' %}">
+      <h1 class="intro--name" >Chip <br> Bray</h1>
+    </div>
+
+   <div class="hero--content--subheadline">
+      <h3 class="description">Welcome to my website</h3>
+      <h5 class="slogan">Here you can find a treasure trove of information about my vast experience as an actor and performer.</h5>
+    </div>
+  </div>
+</section>
+
+<section class="container section--2">
+
+  <h3>My Projects</h3>
+    <h5>Projects that makes my journey worthwhile</h5>
+    <div class="projects--wrapper">
+
+        {% for project in projects %}
+        <div class="project--column">
+            <a href="{% url 'project' project.id %}">
+                <img class="project--thumbnail" src="{{project.thumbnail.url}}">
+            </a>
+            <div class="project--body">
+                <h5>{{project.title}}</h5>
+            </div>
+        </div>
+        {% empty %}
+
+  <h3>There are no projects in the database...</h3>
+  {% endfor %}
+</div>
+
+
+<div class="about--wrapper">
+  <h3>About Me</h3>
+  <p>I graduated from Eckerd College (St. Pete, Fla. BA Theater) in 1978 and soon after toured Europe with ‘Pigeon Drop Comedy Company’, a group formed out of Amsterdam’s infamous ‘Festival of Fools’.
+    Since then I made a name for myself in Amsterdam, Holland where I performed my one man show, ‘Mr. Monday Night’ at the LIDO and worked with various improvisational groups around the world. I can be seen frequently in various Dutch television shows, commercials and international feature films.
+  </p>
+</div>
+</section>
+
+<section class="section--1">
+    <div class="skills--container">
+        <h3>More About Me</h3>
+
+        {% for skill in detailedSkills %}
+        <div class="skill--wrapper">
+            {% if skill.logo %}
+            <img class="skill--logo" src="{{skill.logo.url}}">
+            {% endif %}
+            <div>
+                <h5>{{skill.title}}</h5>
+                <p>{{skill.body}}</p>
+            </div>
+
+        </div>
+        {% endfor %}
+
+
+        <h4>Other Skills</h4>
+        <div class="other--skills--wrapper">
+            {% for skill in skills %}
+            <div class="skill--tag">
+                <span>{{skill.title}}</span>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+
+
+</section>
+
+<section class="section--2">
+
+  <div class="container" id="test">
+
+
+    <form class="contact--form" method="POST">
+    <strong>Please leave a message here...</strong>
+    <hr>
+      {% csrf_token %}
+
+      {% for field in form %}
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">{{field.label}}</label>
+        {{field}}
+      </div>
+      {% endfor %}
+
+      <input class="btn btn-primary" type="submit" value="submit">    
+    </form>
+</div>
+
+</section>
+
+{% endblock content %}
