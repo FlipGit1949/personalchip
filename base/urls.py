@@ -12,6 +12,7 @@ urlpatterns = [
     path('message/<str:pk>/', views.messagePage, name='message'),
     path('add-skill/', views.addSkill, name='add-skill'),
     path('video/', views.index, name='index'),
+    path('youtube/', views.youtube, name='youtube'),
 ]
 
 

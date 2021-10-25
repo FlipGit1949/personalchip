@@ -17,22 +17,12 @@
 		<img class="project--image" src="{{project.thumbnail.url}}">
 		<h1>{{project.title}}</h1>
 
-		 {% if request.user.is_authenticated %}
+		{% if request.user.is_authenticated %}
 		<a class="btn btn-warning" href="{% url 'edit-project' project.id %}">Edit</a>
 		{% endif %}
 
 		<hr>
-		<p>{{project.body|safe}}</p>
-
-		<h1>Youtube Videos</h1>
-
-		<div class="video--wrapper">
-			<a href="https://www.youtube.com/watch?v=A9ObUNyBiiM&ab_channel=ChipBray">Baseball</a>
-			<a href="https://www.youtube.com/watch?v=i_w62st6zNM&ab_channel=ChipBray">Rutger</a>
-		</div>
-
-		<br><br>
-		<hr>
+		{{project.body|safe}}
 
 		<div class="comments-container">
 			<h3>Comments ({{count}})</h3>

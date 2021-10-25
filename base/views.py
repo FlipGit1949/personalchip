@@ -129,3 +129,6 @@ def index(request):
         form = Video_form()
     context = {'form': form, 'all':all_video}
     return render(request, 'base/index.html', context)
+
+def youtube(request):
+    return render(request, 'base/youtube.html')
